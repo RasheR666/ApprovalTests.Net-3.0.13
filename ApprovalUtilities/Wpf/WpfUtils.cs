@@ -1,11 +1,11 @@
 #if !__MonoCS__
 using System;
-using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Alphaleonis.Win32.Filesystem;
 
 namespace ApprovalUtilities.Wpf
 {
@@ -25,7 +25,7 @@ namespace ApprovalUtilities.Wpf
                 // Encoding the RenderBitmapTarget as a PNG file.
                 var png = new PngBitmapEncoder();
                 png.Frames.Add(BitmapFrame.Create(rtb));
-                using (Stream stm = File.Create(filename))
+                using (var stm = File.Create(filename))
                 {
                     png.Save(stm);
                 }
@@ -93,7 +93,7 @@ namespace ApprovalUtilities.Wpf
                 // Encoding the RenderBitmapTarget as a PNG file.
                 var png = new PngBitmapEncoder();
                 png.Frames.Add(BitmapFrame.Create(rtb));
-                using (Stream stm = File.Create(filename))
+                using (var stm = File.Create(filename))
                 {
                     png.Save(stm);
                 }
